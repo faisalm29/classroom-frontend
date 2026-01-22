@@ -32,10 +32,10 @@ const SubjectsList = () => {
             value: selectedDepartment,
           },
         ];
-  const searchFilters =
-    searchQuery === "all"
-      ? [{ field: "name", operator: "contains" as const, value: searchQuery }]
-      : [];
+  const trimmedQuery = searchQuery.trim();
+  const searchFilters = trimmedQuery
+    ? [{ field: "name", operator: "contains" as const, value: searchQuery }]
+    : [];
 
   const subjectTable = useTable<Subject>({
     columns: useMemo<ColumnDef<Subject>[]>(
@@ -51,7 +51,7 @@ const SubjectsList = () => {
           id: "name",
           accessorKey: "name",
           size: 200,
-          header: () => <p className="cloumn-title">Name</p>,
+          header: () => <p className="column-title">Name</p>,
           cell: ({ getValue }) => (
             <span className="text-foreground">{getValue<string>()}</span>
           ),
