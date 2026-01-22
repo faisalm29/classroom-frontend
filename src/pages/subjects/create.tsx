@@ -1,7 +1,5 @@
 const SubjectsCreate = () => {
-    return (
-        <div>Crete</div>
-    )
-}
+  return <div>Create</div>;
+};
 
 export default SubjectsCreate;
